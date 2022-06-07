@@ -1,0 +1,5 @@
+nextjs
+chakra ui
+google maps
+axios
+framer motion
