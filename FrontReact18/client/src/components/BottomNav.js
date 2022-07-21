@@ -4,13 +4,14 @@ import {
   Box,
   Paper,
 } from "@mui/material";
-import { AddLocationAlt, Bed, LocationOn } from "@mui/icons-material";
+import { AddLocationAlt, LocationOn } from "@mui/icons-material";
+import PetsIcon from "@mui/icons-material/Pets";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import { useEffect, useRef, useState } from "react";
 import ClusterMap from "./map/ClusterMap";
-import Rooms from "./rooms/Rooms";
-import AddRoom from "./addRoom/AddRoom";
 import Market from "./market/Market";
+import Places from "./places/Places";
+import AddPlace from "./addPlace/AddPlace";
 
 const BottomNav = () => {
   const [value, setValue] = useState(0);
@@ -23,8 +24,8 @@ const BottomNav = () => {
       {
         {
           0: <ClusterMap />,
-          1: <Rooms />,
-          2: <AddRoom />,
+          1: <Places />,
+          2: <AddPlace />,
           3: <Market />,
         }[value]
       }
@@ -38,7 +39,7 @@ const BottomNav = () => {
           onChange={(e, newValue) => setValue(newValue)}
         >
           <BottomNavigationAction label="Map" icon={<LocationOn />} />
-          <BottomNavigationAction label="Rooms" icon={<Bed />} />
+          <BottomNavigationAction label="Places" icon={<PetsIcon />} />
           <BottomNavigationAction label="Add" icon={<AddLocationAlt />} />
           <BottomNavigationAction
             label="Shop"

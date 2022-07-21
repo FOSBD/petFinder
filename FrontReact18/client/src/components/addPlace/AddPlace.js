@@ -1,11 +1,3 @@
-/* import React from "react";
-
-const AddRoom = () => {
-  return <div>AddRoom</div>;
-};
-
-export default AddRoom; */
-
 import {
   Box,
   Button,
@@ -15,13 +7,19 @@ import {
   StepButton,
   Stepper,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useValue } from "../../context/ContextProvider";
 import AddDetails from "./addDetails/AddDetails";
 import AddImages from "./addImages/AddImages";
 import AddLocation from "./addLocation/AddLocation";
 
-const AddRoom = () => {
+const AddPlace = () => {
+  /*  const {
+    state: { details },
+  } = useValue(); */
+
   const [activeStep, setActiveStep] = useState(0);
+
   const [steps, setSteps] = useState([
     { label: "Location", completed: false },
     { label: "Details", completed: false },
@@ -44,6 +42,22 @@ const AddRoom = () => {
   const findUnfinished = () => {
     return steps.findIndex((step) => !step.completed);
   };
+
+  /*   useEffect(() => {
+    if (details.title.length > 4 && details.description.length > 9) {
+      if (!steps[1].completed) setComplete(1, true);
+    } else {
+      if (steps[1].completed) setComplete(1, false);
+    }
+  }, [details]);
+
+  const setComplete = (index, status) => {
+    setSteps((steps) => {
+      steps[index].completed = status;
+      return [...steps];
+    });
+  }; */
+
   return (
     <Container sx={{ my: 4 }}>
       <Stepper
@@ -88,4 +102,4 @@ const AddRoom = () => {
   );
 };
 
-export default AddRoom;
+export default AddPlace;

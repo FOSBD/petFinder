@@ -6,6 +6,8 @@ const initialState = {
   openLogin: false,
   loading: false,
   alert: { open: false, severity: "info", message: "" },
+  details: { titile: "", description: "", price: 0 },
+  location: { lng: 0, lat: 0 },
 };
 
 const Context = createContext(initialState);

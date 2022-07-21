@@ -3,3 +3,10 @@ chakra ui
 google maps
 axios
 framer motion
+
+
+
+ver progress list comentarios e no add images
+
+
+video 4 __ minuto 15.15
