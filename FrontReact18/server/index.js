@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import placeRouter from "./routes/placeRouter.js";
 import mongoose from "mongoose";
+import userRouter from "./routes/userRouter.js";
 
 dotenv.config();
 
@@ -24,8 +25,9 @@ app.use((req, res, next) => {
 
 app.use(express.json({ limit: "10mb" }));
 
+app.use("/user", userRouter);
 app.use("/place", placeRouter);
-app.use("/", (req, res) => res.json({ message: "Welcome to our API" }));
+app.get("/", (req, res) => res.json({ message: "Welcome to our API" }));
 app.use((req, res) =>
   res.status(404).json({ success: false, message: "Not Found" })
 );

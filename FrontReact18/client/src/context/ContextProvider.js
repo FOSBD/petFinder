@@ -6,6 +6,7 @@ const initialState = {
   openLogin: false,
   loading: false,
   alert: { open: false, severity: "info", message: "" },
+  profile: { open: false, file: null, photoURL: "" },
   details: { titile: "", description: "", price: 0 },
   location: { lng: 0, lat: 0 },
 };

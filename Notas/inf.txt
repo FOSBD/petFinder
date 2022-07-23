@@ -1,12 +1,14 @@
-nextjs
-chakra ui
-google maps
-axios
-framer motion
+cilent:
+  Mui5
+  React 18
+  React Map Gl
+  Google Auth
+  uuid
 
 
 
-ver progress list comentarios e no add images
 
-
-video 4 __ minuto 15.15
+Server:
+  Express
+  Jwt
+  bcrypt

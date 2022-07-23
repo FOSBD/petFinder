@@ -1,9 +1,11 @@
-import { OAuth2Client } from 'google-auth-library';
+import { OAuth2Client } from "google-auth-library";
+import jwt from "jsonwebtoken";
+
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 const auth = async (req, res, next) => {
   try {
-    const token = req.headers.authorization.split(' ')[1];
+    const token = req.headers.authorization.split(" ")[1];
     const googleToken = token.length > 1000;
     if (googleToken) {
       const ticket = await client.verifyIdToken({
@@ -17,17 +19,18 @@ const auth = async (req, res, next) => {
         photoURL: payload.picture,
       };
     } else {
-      // to do: verify our custom jwt token
+      // Verifica com o nosso sistema de Autenticação / Token
+      const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+      const { id, name, photoURL } = decodedToken;
+      req.user = { id, name, photoURL };
     }
     next();
   } catch (error) {
     console.log(error);
-    res
-      .status(401)
-      .json({
-        success: false,
-        message: 'Something is wrong with your authorization!',
-      });
+    res.status(401).json({
+      success: false,
+      message: "Something is wrong with your authorization!",
+    });
   }
 };
 
