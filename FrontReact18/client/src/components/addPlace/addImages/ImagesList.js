@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useValue } from "../../../context/ContextProvider";
-/* import deleteFile from '../../../firebase/deleteFile'; */
+import deleteFile from "../../../firebase/deleteFile";
 
 const ImagesList = () => {
   const {
@@ -15,15 +15,15 @@ const ImagesList = () => {
     dispatch,
   } = useValue();
 
-  /*   const handleDelete = async (image) => {
-    dispatch({ type: 'DELETE_IMAGE', payload: image });
-    const imageName = image?.split(`${currentUser?.id}%2F`)[1]?.split('?')[0];
+  const handleDelete = async (image) => {
+    dispatch({ type: "DELETE_IMAGE", payload: image });
+    const imageName = image?.split(`${currentUser?.id}%2F`)[1]?.split("?")[0];
     try {
-      await deleteFile(`rooms/${currentUser?.id}/${imageName}`);
+      await deleteFile(`places/${currentUser?.id}/${imageName}`);
     } catch (error) {
       console.log(error);
     }
-  }; */
+  };
   return (
     <ImageList
       rowHeight={250}
@@ -38,7 +38,7 @@ const ImagesList = () => {
         <ImageListItem key={index} cols={1} rows={1}>
           <img
             src={image}
-            alt="rooms"
+            alt="places"
             loading="lazy"
             style={{ height: "100%" }}
           />
@@ -51,7 +51,7 @@ const ImagesList = () => {
             actionIcon={
               <IconButton
                 sx={{ color: "white" }}
-                /* onClick={() => handleDelete(image)} */
+                onClick={() => handleDelete(image)}
               >
                 <Cancel />
               </IconButton>

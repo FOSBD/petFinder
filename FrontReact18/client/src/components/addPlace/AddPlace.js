@@ -14,12 +14,10 @@ import AddImages from "./addImages/AddImages";
 import AddLocation from "./addLocation/AddLocation";
 
 const AddPlace = () => {
-  /*  const {
-    state: { details },
-  } = useValue(); */
-
+  const {
+    state: { images, details },
+  } = useValue();
   const [activeStep, setActiveStep] = useState(0);
-
   const [steps, setSteps] = useState([
     { label: "Location", completed: false },
     { label: "Details", completed: false },
@@ -43,7 +41,15 @@ const AddPlace = () => {
     return steps.findIndex((step) => !step.completed);
   };
 
-  /*   useEffect(() => {
+  useEffect(() => {
+    if (images.length) {
+      if (!steps[2].completed) setComplete(2, true);
+    } else {
+      if (steps[2].completed) setComplete(2, false);
+    }
+  }, [images]);
+
+  useEffect(() => {
     if (details.title.length > 4 && details.description.length > 9) {
       if (!steps[1].completed) setComplete(1, true);
     } else {
@@ -56,8 +62,7 @@ const AddPlace = () => {
       steps[index].completed = status;
       return [...steps];
     });
-  }; */
-
+  };
   return (
     <Container sx={{ my: 4 }}>
       <Stepper

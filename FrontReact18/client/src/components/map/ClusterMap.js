@@ -14,8 +14,8 @@ const ClusterMap = () => {
   return (
     <Box
       sx={{
-        height: '80%',
-        with: 'auto',
+        height: "86%",
+        with: "100%",
         position: "relative",
       }}
     >
@@ -26,7 +26,7 @@ const ClusterMap = () => {
       >
         <NavigationControl position="bottom-right" />
         <GeolocateControl
-          position="top-left"
+          position="bottom-right"
           trackUserLocation
           onGeolocate={(e) =>
             dispatch({

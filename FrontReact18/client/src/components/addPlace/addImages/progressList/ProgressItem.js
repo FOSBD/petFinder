@@ -1,10 +1,10 @@
 import { CheckCircleOutline } from "@mui/icons-material";
 import { Box, ImageListItem } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import CircularProgressWithLabel from "./CircularProgressWithLabel";
 import { v4 as uuidv4 } from "uuid";
 import uploadFileProgress from "../../../../firebase/uploadFileProgress";
 import { useValue } from "../../../../context/ContextProvider";
+import CircularProgressWithLabel from "./CircularProgressWhithLabel";
 
 const ProgressItem = ({ file }) => {
   const [progress, setProgress] = useState(0);
@@ -19,7 +19,7 @@ const ProgressItem = ({ file }) => {
       try {
         const url = await uploadFileProgress(
           file,
-          `rooms/${currentUser?.id}`,
+          `places/${currentUser?.id}`,
           imageName,
           setProgress
         );

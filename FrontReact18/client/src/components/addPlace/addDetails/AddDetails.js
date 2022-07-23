@@ -11,26 +11,28 @@ import { useState } from "react";
 import { useValue } from "../../../context/ContextProvider";
 import InfoField from "./InfoField";
 
+import StarOutlineIcon from "@mui/icons-material/StarOutline";
+
 const AddDetails = () => {
   const {
     state: {
-      details: { title, description, price },
+      details: { title, description, rating },
     },
     dispatch,
   } = useValue();
-  const [costType, setCostType] = useState(price ? 1 : 0);
-  /*   const handleCostTypeChange = (e) => {
-    const costType = Number(e.target.value);
-    setCostType(costType);
-    if (costType === 0) {
-      dispatch({ type: "UPDATE_DETAILS", payload: { price: 0 } });
+  const [ratingRank, setRatingRank] = useState(rating ? 1 : 0);
+  const handleRatingRankChange = (e) => {
+    const rating = Number(e.target.value);
+    setRatingRank(rating);
+    if (rating === 0) {
+      dispatch({ type: "UPDATE_DETAILS", payload: { rating: 0 } });
     } else {
-      dispatch({ type: "UPDATE_DETAILS", payload: { price: 15 } });
+      dispatch({ type: "UPDATE_DETAILS", payload: { rating: 1 } });
     }
   };
-  const handlePriceChange = (e) => {
-    dispatch({ type: "UPDATE_DETAILS", payload: { price: e.target.value } });
-  }; */
+  const handleRatingChange = (e) => {
+    dispatch({ type: "UPDATE_DETAILS", payload: { rating: e.target.value } });
+  };
   return (
     <Stack
       sx={{
@@ -39,30 +41,32 @@ const AddDetails = () => {
       }}
     >
       <FormControl>
-        {/* <RadioGroup
-          name="costType"
-          value={costType}
+        <RadioGroup
+          name="ratingRank"
+          value={ratingRank}
           row
-          onChange={handleCostTypeChange}
+          onChange={handleRatingRankChange}
         >
-          <FormControlLabel value={0} control={<Radio />} label="Free Stay" />
-          <FormControlLabel value={1} control={<Radio />} label="Nominal Fee" />
-          {Boolean(costType) && (
+          <FormControlLabel value={0} control={<Radio />} label="No Rating" />
+          <FormControlLabel value={1} control={<Radio />} label="Your Rating" />
+          {Boolean(rating) && (
             <TextField
-              sx={{ width: "7ch !important" }}
+              sx={{ width: "9ch !important" }}
               variant="standard"
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
+                  <InputAdornment position="start">
+                    <StarOutlineIcon />
+                  </InputAdornment>
                 ),
               }}
-              inputProps={{ type: "number", min: 1, max: 50 }}
-              value={price}
-              onChange={handlePriceChange}
-              name="price"
+              inputProps={{ type: "number", min: 1, max: 5 }}
+              value={rating}
+              onChange={handleRatingChange}
+              name="rating"
             />
           )}
-        </RadioGroup> */}
+        </RadioGroup>
       </FormControl>
       <InfoField
         mainProps={{ name: "title", label: "Title", value: title }}
@@ -82,3 +86,43 @@ const AddDetails = () => {
 };
 
 export default AddDetails;
+
+/* import { Stack } from "@mui/material";
+import { useValue } from "../../../context/ContextProvider";
+import InfoField from "./InfoField";
+
+const AddDetails = () => {
+  const {
+    state: {
+      details: { title, description },
+    },
+    dispatch,
+  } = useValue();
+
+  return (
+    <Stack
+      sx={{
+        alignItems: "center",
+        height: "65%",
+        "& .MuiTextField-root": { width: "100%", maxWidth: 500, m: 1 },
+      }}
+    >
+      <InfoField
+        mainProps={{ name: "title", label: "Title", value: title }}
+        minLength={5}
+      />
+      <InfoField
+        mainProps={{
+          name: "description",
+          label: "Description",
+          value: description,
+        }}
+        minLength={10}
+        optionalProps={{ multiline: true, rows: 4 }}
+      />
+    </Stack>
+  );
+};
+
+export default AddDetails;
+ */

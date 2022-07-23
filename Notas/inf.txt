@@ -4,6 +4,7 @@ cilent:
   React Map Gl
   Google Auth
   uuid
+  firebase
 
 
 
@@ -12,3 +13,4 @@ Server:
   Express
   Jwt
   bcrypt
+  mongo db

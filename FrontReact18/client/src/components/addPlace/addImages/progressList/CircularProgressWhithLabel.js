@@ -1,5 +1,5 @@
-import { Box, CircularProgress, Typography } from "@mui/material";
-import React from "react";
+import { Box, CircularProgress, Typography } from '@mui/material';
+import React from 'react';
 
 const CircularProgressWithLabel = ({ value }) => {
   return (
@@ -12,14 +12,14 @@ const CircularProgressWithLabel = ({ value }) => {
       />
       <Box
         sx={{
-          position: "absolute",
+          position: 'absolute',
           top: 0,
           right: 0,
           bottom: 0,
           left: 0,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
         <Typography
@@ -28,7 +28,7 @@ const CircularProgressWithLabel = ({ value }) => {
           color="white"
           fontSize="1rem"
         >
-          {Math.round(value) + "%"}
+          {Math.round(value) + '%'}
         </Typography>
       </Box>
     </Box>
