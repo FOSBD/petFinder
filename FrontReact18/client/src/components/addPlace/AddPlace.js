@@ -1,3 +1,4 @@
+import { Send } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -8,14 +9,15 @@ import {
   Stepper,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { createPlace } from "../../actions/place";
 import { useValue } from "../../context/ContextProvider";
 import AddDetails from "./addDetails/AddDetails";
 import AddImages from "./addImages/AddImages";
 import AddLocation from "./addLocation/AddLocation";
 
-const AddPlace = () => {
+const AddPlace = ({ setPage }) => {
   const {
-    state: { images, details },
+    state: { images, details, location, currentUser }, dispatch
   } = useValue();
   const [activeStep, setActiveStep] = useState(0);
   const [steps, setSteps] = useState([
@@ -23,6 +25,9 @@ const AddPlace = () => {
     { label: "Details", completed: false },
     { label: "Images", completed: false },
   ]);
+
+  const [showSubmit, setShowSubmit] = useState(false);
+
   const handleNext = () => {
     if (activeStep < steps.length - 1) {
       setActiveStep((activeStep) => activeStep + 1);
@@ -57,12 +62,41 @@ const AddPlace = () => {
     }
   }, [details]);
 
+  useEffect(() => {
+    if (location.lng || location.lat) {
+      if (!steps[0].completed) setComplete(0, true);
+    } else {
+      if (steps[0].completed) setComplete(0, false);
+    }
+  }, [location]);
+
   const setComplete = (index, status) => {
     setSteps((steps) => {
       steps[index].completed = status;
       return [...steps];
     });
   };
+
+  useEffect(() => {
+    if (findUnfinished() === -1) {
+      if (!showSubmit) setShowSubmit(true);
+    } else {
+      if (showSubmit) setShowSubmit(false);
+    }
+  }, [steps]);
+
+  const handleSubmit = () => {
+    const place = {
+      lng: location.lng,
+      lat: location.lat,
+      rating: details.rating,
+      title: details.title,
+      description: details.description,
+      images,
+    };
+    createPlace(place, currentUser, dispatch, setPage);
+  };
+
   return (
     <Container sx={{ my: 4 }}>
       <Stepper
@@ -79,7 +113,7 @@ const AddPlace = () => {
           </Step>
         ))}
       </Stepper>
-      <Box>
+      <Box sx={{ pb: 7 }}>
         {
           {
             0: <AddLocation />,
@@ -87,22 +121,31 @@ const AddPlace = () => {
             2: <AddImages />,
           }[activeStep]
         }
+
+        <Stack direction="row" sx={{ pt: 2, justifyContent: "space-around" }}>
+          <Button
+            color="inherit"
+            disabled={!activeStep}
+            onClick={() => setActiveStep((activeStep) => activeStep - 1)}
+          >
+            Back
+          </Button>
+          <Button disabled={checkDisabled()} onClick={handleNext}>
+            Next
+          </Button>
+        </Stack>
+        {showSubmit && (
+          <Stack sx={{ alignItems: "center" }}>
+            <Button
+              variant="contained"
+              endIcon={<Send />}
+              onClick={handleSubmit}
+            >
+              Submit
+            </Button>
+          </Stack>
+        )}
       </Box>
-      <Stack
-        direction="row"
-        sx={{ pt: 2, pb: 7, justifyContent: "space-around" }}
-      >
-        <Button
-          color="inherit"
-          disabled={!activeStep}
-          onClick={() => setActiveStep((activeStep) => activeStep - 1)}
-        >
-          Back
-        </Button>
-        <Button disabled={checkDisabled()} onClick={handleNext}>
-          Next
-        </Button>
-      </Stack>
     </Container>
   );
 };

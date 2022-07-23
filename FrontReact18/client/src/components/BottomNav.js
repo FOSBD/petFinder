@@ -12,6 +12,7 @@ import ClusterMap from "./map/ClusterMap";
 import Market from "./market/Market";
 import Places from "./places/Places";
 import AddPlace from "./addPlace/AddPlace";
+import Protected from "./protected/Protected";
 
 const BottomNav = () => {
   const [value, setValue] = useState(0);
@@ -25,7 +26,11 @@ const BottomNav = () => {
         {
           0: <ClusterMap />,
           1: <Places />,
-          2: <AddPlace />,
+          2: (
+            <Protected>
+              <AddPlace setPage={setValue} />
+            </Protected>
+          ),
           3: <Market />,
         }[value]
       }
