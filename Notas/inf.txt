@@ -1,0 +1,20 @@
+cilent:
+  Mui5
+  React 18
+  React Map Gl
+  Google Auth
+  uuid
+  firebase
+  suppercluster
+  swiper
+
+  No Add Place ha um verificacao que ficou a dar erro foi comentada para postrior resulucao 
+
+
+
+
+Server:
+  Express
+  Jwt
+  bcrypt
+  mongo db
