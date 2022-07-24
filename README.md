@@ -14,16 +14,15 @@ Cilent:
   - Swiper
   
 Server:
-
-    - Express
-    - Dotenv
-    - Jsonwebtoken
-    - Google-auth-library
-    - Bcrypt
-    - Mongo db
-    - Mongoose
+  - Express
+  - Dotenv
+  - Jsonwebtoken
+  - Google-auth-library
+  - Bcrypt
+  - Mongo db
+  - Mongoose
     
-    - Nodemon
+  - Nodemon
     
 Base de Dados:
 
