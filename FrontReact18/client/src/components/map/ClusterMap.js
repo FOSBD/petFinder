@@ -134,7 +134,7 @@ const ClusterMap = () => {
             </Marker>
           );
         })}
-        /* <NavigationControl position="bottom-right" />
+        <NavigationControl position="bottom-right" />
         <GeolocateControl
           position="bottom-right"
           trackUserLocation
@@ -145,7 +145,7 @@ const ClusterMap = () => {
             })
           }
         />
-        <Geocoder /> */
+        <Geocoder />
       </ReactMapGL>
     </Box>
   );

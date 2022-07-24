@@ -28,6 +28,7 @@ export const useValue = () => {
 const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const mapRef = useRef();
+
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (currentUser) {
