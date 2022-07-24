@@ -13,7 +13,8 @@ Cilent:
   - Suppercluster
   - Swiper
   
-  Server:
+Server:
+
     - Express
     - Dotenv
     - Jsonwebtoken
@@ -24,7 +25,7 @@ Cilent:
     
     - Nodemon
     
-Base de Dados
+Base de Dados:
 
   - Mongo
   
