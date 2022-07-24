@@ -1,20 +1,31 @@
-cilent:
-  Mui5
-  React 18
-  React Map Gl
-  Google Auth
-  uuid
-  firebase
-  suppercluster
-  swiper
+ProjectFinalEitc
 
-  No Add Place ha um verificacao que ficou a dar erro foi comentada para postrior resulucao 
+Cilent:
 
-
-
-
+Mui5
+React 18
+React Map Gl
+Google Auth
+Uuid
+Firebase
+Suppercluster
+Swiper
 Server:
-  Express
-  Jwt
-  bcrypt
-  mongo db
+
+- Express
+- Dotenv
+- Jsonwebtoken
+- Google-auth-library
+- Bcrypt
+- Mongo db
+- Mongoose
+
+- Nodemon
+
+
+Base de Dados:
+
+Mongo
+Armazenamento de Fotos:
+
+Firebase
