@@ -26,11 +26,7 @@ const BottomNav = () => {
         {
           0: <ClusterMap />,
           1: <Places />,
-          2: (
-            <Protected>
-              <AddPlace setPage={setValue} />
-            </Protected>
-          ),
+          2: <Protected><AddPlace setPage={setValue} /></Protected>,
           3: <Market />,
         }[value]
       }

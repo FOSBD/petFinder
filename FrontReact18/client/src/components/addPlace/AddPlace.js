@@ -15,7 +15,7 @@ import AddDetails from "./addDetails/AddDetails";
 import AddImages from "./addImages/AddImages";
 import AddLocation from "./addLocation/AddLocation";
 
-const AddPlace = ({ setPage }) => {
+const AddPlace = ({setPage}) => {
   const {
     state: { images, details, location, currentUser }, dispatch
   } = useValue();
@@ -46,7 +46,7 @@ const AddPlace = ({ setPage }) => {
     return steps.findIndex((step) => !step.completed);
   };
 
-  useEffect(() => {
+/*   useEffect(() => {
     if (images.length) {
       if (!steps[2].completed) setComplete(2, true);
     } else {
@@ -68,7 +68,7 @@ const AddPlace = ({ setPage }) => {
     } else {
       if (steps[0].completed) setComplete(0, false);
     }
-  }, [location]);
+  }, [location]); */
 
   const setComplete = (index, status) => {
     setSteps((steps) => {
@@ -77,13 +77,13 @@ const AddPlace = ({ setPage }) => {
     });
   };
 
-  useEffect(() => {
+/*   useEffect(() => {
     if (findUnfinished() === -1) {
       if (!showSubmit) setShowSubmit(true);
     } else {
       if (showSubmit) setShowSubmit(false);
     }
-  }, [steps]);
+  }, [steps]); */
 
   const handleSubmit = () => {
     const place = {
@@ -134,7 +134,7 @@ const AddPlace = ({ setPage }) => {
             Next
           </Button>
         </Stack>
-        {showSubmit && (
+        
           <Stack sx={{ alignItems: "center" }}>
             <Button
               variant="contained"
@@ -144,7 +144,7 @@ const AddPlace = ({ setPage }) => {
               Submit
             </Button>
           </Stack>
-        )}
+        
       </Box>
     </Container>
   );
