@@ -15,9 +15,10 @@ import AddDetails from "./addDetails/AddDetails";
 import AddImages from "./addImages/AddImages";
 import AddLocation from "./addLocation/AddLocation";
 
-const AddPlace = ({setPage}) => {
+const AddPlace = ({ setPage }) => {
   const {
-    state: { images, details, location, currentUser }, dispatch
+    state: { images, details, location, currentUser },
+    dispatch,
   } = useValue();
   const [activeStep, setActiveStep] = useState(0);
   const [steps, setSteps] = useState([
@@ -46,7 +47,9 @@ const AddPlace = ({setPage}) => {
     return steps.findIndex((step) => !step.completed);
   };
 
-/*   useEffect(() => {
+  // erro propreties not reading ja depois de estar a funcionar
+
+  /*   useEffect(() => {
     if (images.length) {
       if (!steps[2].completed) setComplete(2, true);
     } else {
@@ -77,7 +80,7 @@ const AddPlace = ({setPage}) => {
     });
   };
 
-/*   useEffect(() => {
+  /*   useEffect(() => {
     if (findUnfinished() === -1) {
       if (!showSubmit) setShowSubmit(true);
     } else {
@@ -134,17 +137,12 @@ const AddPlace = ({setPage}) => {
             Next
           </Button>
         </Stack>
-        
-          <Stack sx={{ alignItems: "center" }}>
-            <Button
-              variant="contained"
-              endIcon={<Send />}
-              onClick={handleSubmit}
-            >
-              Submit
-            </Button>
-          </Stack>
-        
+
+        <Stack sx={{ alignItems: "center" }}>
+          <Button variant="contained"  onClick={handleSubmit}>
+            Add Place
+          </Button>
+        </Stack>
       </Box>
     </Container>
   );
