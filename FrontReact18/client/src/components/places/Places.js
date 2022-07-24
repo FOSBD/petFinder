@@ -14,6 +14,7 @@ import { StarBorder } from "@mui/icons-material";
 const Places = () => {
   const {
     state: { places },
+    dispatch,
   } = useValue();
   return (
     <Container>
@@ -46,6 +47,9 @@ const Places = () => {
                 alt={place.title}
                 loading="lazy"
                 style={{ cursor: "pointer" }}
+                onClick={() =>
+                  dispatch({ type: "UPDATE_PLACE", payload: place })
+                }
               />
               <ImageListItemBar
                 title={"Rating"}

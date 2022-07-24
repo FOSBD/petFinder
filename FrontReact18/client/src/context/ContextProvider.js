@@ -17,6 +17,7 @@ const initialState = {
   details: { titile: "", description: "", rating: 0 },
   location: { lng: 0, lat: 0 },
   places: [],
+  place: null,
 };
 
 const Context = createContext(initialState);

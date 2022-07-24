@@ -6,6 +6,7 @@ cilent:
   uuid
   firebase
   suppercluster
+  swiper
 
 
 
