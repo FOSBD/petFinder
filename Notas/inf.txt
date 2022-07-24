@@ -5,6 +5,7 @@ cilent:
   Google Auth
   uuid
   firebase
+  suppercluster
 
 
 

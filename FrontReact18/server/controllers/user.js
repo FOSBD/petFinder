@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 import tryCatch from "./utils/tryCatch.js";
+import Place from "../models/Place.js";
 
 export const register = tryCatch(async (req, res) => {
   const { name, email, password } = req.body;
@@ -63,11 +64,11 @@ export const updateProfile = tryCatch(async (req, res) => {
   });
   const { _id: id, name, photoURL } = updatedUser;
 
-  // To Do: update all the places records added by this user
+  await Place.updateMany({ uid: id }, { uName: name, uPhoto: photoURL });
 
   // Actualiza o Token com a informação nova
   const token = jwt.sign({ id, name, photoURL }, process.env.JWT_SECRET, {
-    expiresIn: '1h',
+    expiresIn: "1h",
   });
   res.status(200).json({ success: true, result: { name, photoURL, token } });
 });

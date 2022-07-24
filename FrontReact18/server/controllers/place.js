@@ -14,3 +14,8 @@ export const createPlace = tryCatch(async (req, res) => {
   await newPlace.save();
   res.status(201).json({ success: true, result: newPlace });
 });
+
+export const getPlaces = tryCatch(async (req, res) => {
+  const places = await Place.find().sort({ _id: -1 });
+  res.status(200).json({ success: true, result: places });
+});

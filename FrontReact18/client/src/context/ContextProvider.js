@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useRef,
+} from "react";
 import reducer from "./reducer";
 
 const initialState = {
@@ -10,6 +16,7 @@ const initialState = {
   images: [],
   details: { titile: "", description: "", rating: 0 },
   location: { lng: 0, lat: 0 },
+  places: [],
 };
 
 const Context = createContext(initialState);
@@ -20,6 +27,7 @@ export const useValue = () => {
 
 const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const mapRef = useRef();
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (currentUser) {
@@ -28,7 +36,9 @@ const ContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>
+    <Context.Provider value={{ state, dispatch, mapRef }}>
+      {children}
+    </Context.Provider>
   );
 };
 
