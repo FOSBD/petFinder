@@ -64,3 +64,5 @@ const ImagesList = () => {
 };
 
 export default ImagesList;
+
+// Render imagens

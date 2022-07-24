@@ -20,14 +20,17 @@ export const createPlace = async (place, currentUser, dispatch, setPage) => {
     });
     dispatch({ type: "RESET_PLACE" });
     setPage(0);
+    dispatch({ type: "UPDATE_PLACE", payload: result });
   }
 
   dispatch({ type: "END_LOADING" });
 };
 
 export const getPlaces = async (dispatch) => {
-  const result = await fetchData({ url, method: 'GET' }, dispatch);
+  const result = await fetchData({ url, method: "GET" }, dispatch);
   if (result) {
-    dispatch({ type: 'UPDATE_PLACES', payload: result });
+    dispatch({ type: "UPDATE_PLACES", payload: result });
   }
 };
+
+// Funcao resposavel por criar Places no servidor

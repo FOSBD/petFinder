@@ -9,7 +9,6 @@ import PetsIcon from "@mui/icons-material/Pets";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import { useEffect, useRef, useState } from "react";
 import ClusterMap from "./map/ClusterMap";
-import Market from "./market/Market";
 import Places from "./places/Places";
 import AddPlace from "./addPlace/AddPlace";
 import Protected from "./protected/Protected";
@@ -26,8 +25,11 @@ const BottomNav = () => {
         {
           0: <ClusterMap />,
           1: <Places />,
-          2: <Protected><AddPlace setPage={setValue} /></Protected>,
-          3: <Market />,
+          2: (
+            <Protected>
+              <AddPlace setPage={setValue} />
+            </Protected>
+          ),
         }[value]
       }
       <Paper
@@ -43,6 +45,7 @@ const BottomNav = () => {
           <BottomNavigationAction label="Places" icon={<PetsIcon />} />
           <BottomNavigationAction label="Add" icon={<AddLocationAlt />} />
           <BottomNavigationAction
+            href="http://www.google.com/"
             label="Shop"
             icon={<LocalGroceryStoreIcon />}
           />

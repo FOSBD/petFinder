@@ -86,3 +86,5 @@ const AddDetails = () => {
 };
 
 export default AddDetails;
+
+// Componente com os campos a prencher para criar os detalhes nos Places inseridos

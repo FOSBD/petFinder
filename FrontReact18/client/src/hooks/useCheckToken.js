@@ -17,3 +17,5 @@ const useCheckToken = () => {
 };
 
 export default useCheckToken;
+
+// Componente para verificar o Token e faze-lo expirar

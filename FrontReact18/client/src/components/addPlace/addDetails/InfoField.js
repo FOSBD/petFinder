@@ -55,3 +55,5 @@ const InfoField = ({ mainProps, optionalProps = {}, minLength }) => {
 };
 
 export default InfoField;
+
+// Confirmacao no Front end dos campos a ser preenchidos para criar uma descricao nos Places

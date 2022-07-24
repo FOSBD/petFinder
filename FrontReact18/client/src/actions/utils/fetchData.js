@@ -26,3 +26,5 @@ const fetchData = async (
 };
 
 export default fetchData;
+
+// Funcao para fazer fetch ao servidor

@@ -8,6 +8,8 @@ cilent:
   suppercluster
   swiper
 
+  No Add Place ha um verificacao que ficou a dar erro foi comentada para postrior resulucao 
+
 
 
 

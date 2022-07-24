@@ -4,6 +4,7 @@ import ReactMapGL, {
   GeolocateControl,
   Marker,
   NavigationControl,
+  Popup,
 } from "react-map-gl";
 import { useValue } from "../../context/ContextProvider";
 import Geocoder from "../addPlace/addLocation/Geocoder";
@@ -11,6 +12,8 @@ import Supercluster from "supercluster";
 import { getPlaces } from "../../actions/place";
 import "./cluster.css";
 import { Avatar, Paper, Tooltip } from "@mui/material";
+
+import PopupPlace from './PopupPlace';
 
 const supercluster = new Supercluster({
   radius: 75,
@@ -30,6 +33,7 @@ const ClusterMap = () => {
   const [clusters, setClusters] = useState([]);
   const [bounds, setBounds] = useState([-180, -85, 180, 85]);
   const [zoom, setZoom] = useState(0);
+  const [popupInfo, setPopupInfo] = useState(null);
 
   useEffect(() => {
     getPlaces(dispatch);
@@ -129,11 +133,26 @@ const ClusterMap = () => {
                   src={cluster.properties.uPhoto}
                   component={Paper}
                   elevation={2}
+                  onClick={() => setPopupInfo(cluster.properties)}
                 />
               </Tooltip>
             </Marker>
           );
         })}
+
+        {popupInfo && (
+          <Popup
+            longitude={popupInfo.lng}
+            latitude={popupInfo.lat}
+            maxWidth="auto"
+            closeOnClick={false}
+            focusAfterOpen={false}
+            onClose={() => setPopupInfo(null)}
+          >
+            <PopupPlace {...{ popupInfo }} />
+          </Popup>
+        )}
+
         <NavigationControl position="bottom-right" />
         <GeolocateControl
           position="bottom-right"

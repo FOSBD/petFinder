@@ -95,3 +95,5 @@ export const updateProfile = async (currentUser, updatedFields, dispatch) => {
 
   dispatch({ type: "END_LOADING" });
 };
+
+// Funcao resposavel por criar, registar e actualizar users no servidor

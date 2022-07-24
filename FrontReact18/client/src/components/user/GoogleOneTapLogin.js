@@ -60,3 +60,5 @@ const GoogleOneTapLogin = () => {
 };
 
 export default GoogleOneTapLogin;
+
+// Componente para efectuar o Login com o Google

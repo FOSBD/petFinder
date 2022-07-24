@@ -23,18 +23,13 @@ const NavBar = () => {
       <AppBar>
         <Container maxWidth="lg">
           <Toolbar disableGutters>
-            <Box sx={{ mr: 1 }}>
-              <IconButton size="large" color="inherit">
-                <Menu />
-              </IconButton>
-            </Box>
             <Typography
               variant="h6" //Desktop
               component="h1"
               noWrap
               sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
             >
-              PetFinder
+              PetFinder App
             </Typography>
             <Typography //Mobile
               variant="h6"
@@ -42,7 +37,7 @@ const NavBar = () => {
               noWrap
               sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
             >
-              PetFinder
+              PetFinder App
             </Typography>
             {!currentUser ? (
               <Button

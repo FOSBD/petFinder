@@ -42,3 +42,5 @@ const AddImages = () => {
 };
 
 export default AddImages;
+
+// Componente para carregar as imagens na criacao de um Place
