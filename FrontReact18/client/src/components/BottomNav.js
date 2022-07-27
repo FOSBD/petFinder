@@ -45,7 +45,8 @@ const BottomNav = () => {
           <BottomNavigationAction label="Places" icon={<PetsIcon />} />
           <BottomNavigationAction label="Add" icon={<AddLocationAlt />} />
           <BottomNavigationAction
-            href="http://www.google.com/"
+            target="_blank"
+            href="http://localhost:3001/home"
             label="Shop"
             icon={<LocalGroceryStoreIcon />}
           />
